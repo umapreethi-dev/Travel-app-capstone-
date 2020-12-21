@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+    </style>
+    <title>Travel App</title>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="media/website_logo.png" alt="logo" />
+    </header>
+    <main>
+      <div class="herosection">
+        <h1>Plan your future trip today</h1>
+        <h2>Search for safest destinations</h2>
+        <form>
+          <input type="text" id="arrival_city" placeholder="From" required />
+          <input type="text" id="city" placeholder="To" required /><br />
+          <input type="date" id="date" placeholder="Departure" required />
+          <input type="date" id="re_date" placeholder="Return" required /><br />
+          <button
+            type="submit"
+            class="button"
+            onclick="return Client.performFunction(event)"
+            onsubmit="return performFunction(event)"
+          >
+            EXPLORE
+          </button>
+        </form>
+      </div>
+
+      <div id="loader"></div>
+      <section id="container">
+        <div id="image" class="box_image"></div>
+        <div class="box_text">
+          <div id="country"></div>
+          <div id="arrival"></div>
+          <div id="d_date"></div>
+          <div id="r_date"></div>
+          <div id="duration"></div>
+
+          <div id="day"></div>
+          <div id="currentWeather"></div>
+          <div id="temp"></div>
+          <div id="weather"></div>
+          <div id="flightButton"></div>
+          <div id="flight1"></div>
+          <div id="flight2"></div>
+          <div id="flight3"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer></footer>
+    <script>
+      // Check that service workers are supported
+      if ("serviceWorker" in navigator) {
+        // Use the window load event to keep the page load performant
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+    </script>
+  </body>
+</html>
