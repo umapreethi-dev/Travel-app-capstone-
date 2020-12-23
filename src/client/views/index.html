@@ -17,10 +17,11 @@
         <h1>Plan your future trip today</h1>
         <h2>Search for safest destinations</h2>
         <form>
-          <input type="text" id="arrival_city" placeholder="From" required />
-          <input type="text" id="city" placeholder="To" required /><br />
-          <input type="date" id="date" placeholder="Departure" required />
-          <input type="date" id="re_date" placeholder="Return" required /><br />
+          <input type="text" id="arrival_city" placeholder="From" />
+          <input type="text" id="city" placeholder="To" />
+          <input type="date" id="date" placeholder="Departure" />
+          <input type="date" id="re_date" placeholder="Return" />
+          <div id="error"></div>
           <button
             type="submit"
             class="button"
@@ -31,30 +32,22 @@
           </button>
         </form>
       </div>
-
-      <div id="loader"></div>
+      <!--Container box-->
+      <div id="load"></div>
       <section id="container">
         <div id="image" class="box_image"></div>
         <div class="box_text">
-          <div id="country"></div>
-          <div id="arrival"></div>
-          <div id="d_date"></div>
-          <div id="r_date"></div>
+          <div id="tripDetails"></div>
           <div id="duration"></div>
-
-          <div id="day"></div>
           <div id="currentWeather"></div>
-          <div id="temp"></div>
-          <div id="weather"></div>
           <div id="flightButton"></div>
-          <div id="flight1"></div>
-          <div id="flight2"></div>
-          <div id="flight3"></div>
+          <div id="flight"></div>
+          <div id="weatherButton"></div>
+          <div id="forecast"></div>
         </div>
       </section>
     </main>
 
-    <footer></footer>
     <script>
       // Check that service workers are supported
       if ("serviceWorker" in navigator) {

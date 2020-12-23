@@ -57,7 +57,7 @@ const api_key = process.env.weather_API_KEY;
 app.get("/dailyWeather", async (req, res) => {
   let lat = req.query.lat;
   let lon = req.query.lon;
-  let weather_url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${api_key}&days=10`;
+  let weather_url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&key=${api_key}&days=16`;
   const weatherData = await fetch(weather_url, { method: "POST" });
   try {
     const data = await weatherData.json();
@@ -72,25 +72,10 @@ const img_api = process.env.image_API_KEY;
 
 app.get("/image", async (req, res) => {
   let city = req.query.q;
-  let image_url = `https://pixabay.com/api/?key=${img_api}&q=city+${city}&image_type=photo`;
+  let image_url = `https://pixabay.com/api/?key=${img_api}&q=${city}&image_type=photo`;
   const imageData = await fetch(image_url, { method: "POST" });
   try {
     const data = await imageData.json();
-    res.send(data);
-  } catch (error) {
-    console.log("error", error);
-  }
-});
-
-// Get Route for Country(REST API)
-
-app.get("/countryInfo", async (req, res) => {
-  let country = req.query.country;
-  let country_url = `https://restcountries.eu/rest/v2/alpha/${country}`;
-  const countryData = await fetch(country_url, { method: "POST" });
-  try {
-    const data = await countryData.json();
-    console.log(data);
     res.send(data);
   } catch (error) {
     console.log("error", error);
@@ -102,8 +87,7 @@ app.get("/countryInfo", async (req, res) => {
 app.get("/flightInfo", async (req, res) => {
   //let country = req.query.country;
   const flight_api = process.env.flight_API_KEY;
-
-  let flight_url = `http://api.aviationstack.com/v1/flights?access_key=${flight_api}`;
+  let flight_url = `http://api.aviationstack.com/v1/flights?access_key=${flight_api}&limit=5`;
   const flightData = await fetch(flight_url);
   try {
     const data = await flightData.json();
